@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+	
+    <display-name>jersey-rest-jsp-frame-1</display-name>
+	  
+    <welcome-file-list>
+        <welcome-file>welcome-file.jsp</welcome-file>
+    </welcome-file-list>
+	  
+    <filter>
+        <filter-name>jersey</filter-name>
+        <filter-class>com.sun.jersey.spi.container.servlet.ServletContainer</filter-class>
+        <init-param>
+            <!--  "Viewable" JSP root is placed in the /WEB-INF/jsp directory. 
+            This means that it is not accessible outside of the web application. 
+            There's no way to construct a URL that can retrieve it. -->
+            <param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+            <param-value>/WEB-INF/jsp</param-value>
+        </init-param>
+        <init-param>
+            <!-- Declare what file type should be accessible thru Jersey without being interpreted as REST call -->
+            <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
+            <param-value>(/(image|js|css)/?.*)|(/.*\.jsp)|(/WEB-INF/.*\.jsp)|(/WEB-INF/.*\.jspf)|(/.*\.html)|(/favicon\.ico)|(/robots\.txt)</param-value>
+        </init-param>
+    </filter>
+	
+    <filter-mapping>
+        <filter-name>jersey</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+	    
+</web-app>
