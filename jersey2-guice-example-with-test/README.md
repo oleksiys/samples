@@ -1,0 +1,1 @@
+Jersey 2.0 Grizzly-based Guice sample
